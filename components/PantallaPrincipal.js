@@ -11,31 +11,31 @@ export default function PantallaPrincipal({navigation}) {
       {/* Contenedor de los botones en una cuadrícula de 3x3 */}
       <View style={styles.buttonsContainer}>
         <View style={styles.button}>
-          <Button title="Mesa 1" onPress={() => navigation.navigate('menuMesas')} />
+          <Button title="Mesa 1" onPress={() => navigation.navigate('MenuMesas')} />
         </View>
         <View style={styles.button}>
-          <Button title="Mesa 2" onPress={() => navigation.navigate('menuMesas')} />
+          <Button title="Mesa 2" onPress={() => navigation.navigate('MenuMesas')} />
         </View>
         <View style={styles.button}>
-          <Button title="Mesa 3"onPress={() => navigation.navigate('menuMesas')} />
+          <Button title="Mesa 3"onPress={() => navigation.navigate('MenuMesas')} />
         </View>
         <View style={styles.button}>
-          <Button title="Mesa 4" onPress={() => navigation.navigate('menuMesas')} />
+          <Button title="Mesa 4" onPress={() => navigation.navigate('MenuMesas')} />
         </View>
         <View style={styles.button}>
-          <Button title="Mesa 5" onPress={() => navigation.navigate('menuMesas')} />
+          <Button title="Mesa 5" onPress={() => navigation.navigate('MenuMesas')} />
         </View>
         <View style={styles.button}>
-          <Button title="Mesa 6" onPress={() => navigation.navigate('menuMesas')} />
+          <Button title="Mesa 6" onPress={() => navigation.navigate('MenuMesas')} />
         </View>
         <View style={styles.button}>
-          <Button title="Mesa 7" onPress={() => navigation.navigate('menuMesas')} />
+          <Button title="Mesa 7" onPress={() => navigation.navigate('MenuMesas')} />
         </View>
         <View style={styles.button}>
-          <Button title="Mesa 8" onPress={() => navigation.navigate('menuMesas')} />
+          <Button title="Mesa 8" onPress={() => navigation.navigate('MenuMesas')} />
         </View>
         <View style={styles.button}>
-          <Button title="Mesa 9" onPress={() => navigation.navigate('menuMesas')} />
+          <Button title="Mesa 9" onPress={() => navigation.navigate('MenuMesas')} />
         </View>
       </View>
     </View>
