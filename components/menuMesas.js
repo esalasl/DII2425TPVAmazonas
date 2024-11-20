@@ -1,28 +1,28 @@
-import{View, Text, Button} from "react-native";
+import React from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-function mesas({navigation}){
-
-return(
-<View style={styles.container}> 
-    <Text>MENU MESAS</Text> 
-
-<View style={styles.button}>
-    <Button title="INSERTAR"></Button>
-</View>
-<View style={styles.button}>
-    <Button title="COMPROBAR"></Button>
-</View >
-<View style={styles.button}>
-    <Button title="COBRAR"></Button>
-</View> 
-<View style={styles.button}>
-<Button onPress={()=>navigation.goBack()}></Button>
-</View  >
-</View>
-); 
+function MenuMesas({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text>MENU MESAS</Text>
+      <View style={styles.button}>
+        <Button title="INSERTAR"  />
+      </View>
+      <View style={styles.button}>
+        <Button title="COMPROBAR"  />
+      </View>
+      <View style={styles.button}>
+        <Button title="COBRAR"   />
+      </View>
+      <View style={styles.button}>
+        <Button title="VOLVER" onPress={() => navigation.goBack()} />
+      </View>
+    </View>
+  );
 }
 
-export default mesas();
+
+export default MenuMesas;
 
 const styles = StyleSheet.create({
     container: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
       
     },
     button : {
-        marginBotton: 15,
+        marginBottom: 15,
         width: "80%"
     }
 
