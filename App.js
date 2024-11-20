@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import PantallaPrincipal from './components/PantallaPrincipal';
 import MenuMesas from './components/MenuMesas';
+import VistaComandas from './components/VistaComandas';
 
 const Stack = createStackNavigator();
 
@@ -10,7 +11,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="PantallaPrincipal">
-        <Stack.Screen 
+       <Stack.Screen 
           name="PantallaPrincipal" 
           component={PantallaPrincipal} 
           options={{ title: 'Inicio' }}
@@ -19,6 +20,11 @@ const App = () => {
           name="MenuMesas" 
           component={MenuMesas} 
           options={{ title: 'Menú Mesas'}}
+        />
+         <Stack.Screen 
+          name="VistaComandas" 
+          component={VistaComandas} 
+          options={{ title: 'Platos'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
