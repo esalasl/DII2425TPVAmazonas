@@ -2,7 +2,9 @@ import React from 'react';
 import { Text, View, Button, StyleSheet } from 'react-native';
 //import MenuMesas from './MenuMesas'; // Importa MenuMesas desde el archivo separado
 
-export default function PantallaPrincipal({navigation}) {
+
+function PantallaPrincipal({navigation}) {
+
   return (
     <View style={styles.container}>
       {/* Título */}
@@ -41,6 +43,9 @@ export default function PantallaPrincipal({navigation}) {
     </View>
   );
 }
+
+
+export default PantallaPrincipal;
 
 const styles = StyleSheet.create({
   container: {
