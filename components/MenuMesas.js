@@ -6,13 +6,13 @@ function MenuMesas({ navigation }) {
     <View style={styles.container}>
       <Text>MENU MESAS</Text>
       <View style={styles.button}>
-        <Button title="INSERTAR"  />
+        <Button title="INSERTAR" onPress={() => navigation.navigate('Insertar')} />
       </View>
       <View style={styles.button}>
         <Button title="COMPROBAR"  />
       </View>
       <View style={styles.button}>
-        <Button title="COBRAR"  />
+        <Button title="COBRAR"   />
       </View>
       <View style={styles.button}>
         <Button title="VOLVER" onPress={() => navigation.goBack()} />

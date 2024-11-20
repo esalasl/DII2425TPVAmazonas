@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import PantallaPrincipal from './components/PantallaPrincipal';
 import MenuMesas from './components/MenuMesas';
+import Insertar from './components/Insertar';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,12 @@ const App = () => {
           component={MenuMesas} 
           options={{ title: 'Menú Mesas'}}
         />
+        <Stack.Screen 
+          name="Insertar" 
+          component={Insertar} 
+          options={{ title: 'Tipos de platos'}}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
