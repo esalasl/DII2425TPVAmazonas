@@ -1,14 +1,50 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 
-export function MenuComandas({categorias, navigation}){ 
-return categorias.map(categoria =>({   // map es para recorrer el array
-    tipo: categoria.tipo,
-    boton: <Button>(categoria.tipo)</Button>,
-    comida:categoria.comidas
-})) 
+export function MenuComandas({categorias = [], navigation}){ 
+return(
+    <View style={styles.container}> 
+        
+      {categorias.map((categoria) => (
+        <View key={categoria.tipo} style={styles.button}>
+          {/* Genera un botón para cada tipo de comida */}
+          <Button
+            title={categoria.tipo.toUpperCase()} // Muestra el tipo de comida en el botón
+          />
+
+        </View>
+      ))}
+      <View style={styles.button}>
+        <Button title="CONTINUAR"/>
+      </View>
+      <View style={styles.button}>
+        <Button title="FINALIZAR"/>
+      </View>
+      <View style={styles.button}>
+        <Button title="ATRAS" onPress={() => navigation.goBack()}/>
+      </View>
+    </View>
+); 
+  
 }
- export default MenuComandas;
+
+export default MenuComandas;
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      padding: 100,
+    },
+    button: {
+      marginBottom: 15,
+      width: '80%',
+    },
+  });
+
+
 //contiene los diferentes arrays
 const categorias =[
     {
