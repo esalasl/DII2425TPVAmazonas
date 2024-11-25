@@ -38,7 +38,7 @@ export default function MenuComandas({ route, navigation }) {
           <Button title="FINALIZAR"></Button>
         </View>
         </View>
-        <View style={styles.button}>
+        <View style={styles.buttonAtras}>
           <Button title="ATRÁS" onPress={() => navigation.goBack()}/>
         </View>
       </View>
@@ -63,16 +63,21 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
+
   },
   rowButtons: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "80%", // ajusta el tamaño 
+    width: "60%", // ajusta el tamaño 
   },
   button: {
     margin: 10,
-    width: "60%",
-    backgroundColor: '#ea899a', 
+    width: "60%", 
+  
+  },
+  buttonAtras:{
+    margin:10,
+    marginTop: 20,
+    
   }
-
 });
