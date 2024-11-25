@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
 
 const categorias = [
   {
@@ -28,15 +29,17 @@ export default function MenuComandas({ route, navigation }) {
       </View>
 
         {/*Contenedor de botones de OPCIONES*/}
-      <View style={styles.opcionesContainer}>
+      <View>
+        <View style={styles.rowButtons}>
         <View style={styles.button}>
           <Button title="CONTINUAR"></Button>
         </View>
         <View style={styles.button}>
           <Button title="FINALIZAR"></Button>
         </View>
-        <View style={styles.button}>
-          <Button title="ATRÁS"></Button>
+        </View>
+        <View style={styles.buttonAtras}>
+          <Button title="ATRÁS" onPress={() => navigation.goBack()}/>
         </View>
       </View>
     </View>
@@ -60,17 +63,21 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
+
+  },
+  rowButtons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "60%", // ajusta el tamaño 
   },
   button: {
     margin: 10,
-    width: "60%",
-    backgroundColor: "pink", 
+    width: "60%", 
+  
   },
-
-  opcionesContainer: {
-    width :"60%",
-    padding :6,
-    alignItems : "center",
+  buttonAtras:{
+    margin:10,
+    marginTop: 20,
+    
   }
-
 });
