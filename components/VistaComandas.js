@@ -1,77 +1,78 @@
 import React from "react";
-import { View, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from "react-native";
+import { Button } from "react-native-elements";
 
-export function MenuComandas({categorias = [], navigation}){ 
-return(
-    <View style={styles.container}> 
-        
-      {categorias.map((categoria) => (
-        <View key={categoria.tipo} style={styles.button}>
-          {/* Genera un botón para cada tipo de comida */}
-          <Button
-            title={categoria.tipo.toUpperCase()} // Muestra el tipo de comida en el botón
-          />
+const categorias = [
+  {
+    tipo: "entrantes",
+    comidas: ["Ensalada César", "Pincho de tortilla", "Croquetas"],
+  },
+  { tipo: "primeros", comidas: ["Paella", "Arroz con pollo", "Lasaña"] },
+  { tipo: "segundos", comidas: ["Filete a la plancha", "Salmón ahumado"] },
+  { tipo: "bebidas", comidas: ["Coca Cola", "Nestea", "Agua"] },
+  { tipo: "postres", comidas: ["Tiramisú", "Tarta de chocolate", "Gelatina"] },
+];
 
+export default function MenuComandas({ route, navigation }) {
+  const { tipo } = route.params; // Obtén el tipo de comida de los parámetros
+  const categoria = categorias.find((c) => c.tipo === tipo); // Busca la categoría correspondiente
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{tipo.toUpperCase()}</Text>
+      <View style={styles.buttonsContainer}>
+        {categoria.comidas.map((comida, index) => (
+          <View style={styles.button} key={index}>
+            <Button title={comida} />
+          </View>
+        ))}
+      </View>
+
+        {/*Contenedor de botones de OPCIONES*/}
+      <View>
+        <View style={styles.rowButtons}>
+        <View style={styles.button}>
+          <Button title="CONTINUAR"></Button>
         </View>
-      ))}
-      <View style={styles.button}>
-        <Button title="CONTINUAR"/>
-      </View>
-      <View style={styles.button}>
-        <Button title="FINALIZAR"/>
-      </View>
-      <View style={styles.button}>
-        <Button title="ATRAS" onPress={() => navigation.goBack()}/>
+        <View style={styles.button}>
+          <Button title="FINALIZAR"></Button>
+        </View>
+        </View>
+        <View style={styles.button}>
+          <Button title="ATRÁS" onPress={() => navigation.goBack()}/>
+        </View>
       </View>
     </View>
-); 
-  
+  );
 }
 
-export default MenuComandas;
-
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'space-around',
-      padding: 100,
-    },
-    button: {
-      marginBottom: 15,
-      width: '80%',
-    },
-  });
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#fff",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  buttonsContainer: {
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%",
+  },
+  rowButtons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "80%", // ajusta el tamaño 
+  },
+  button: {
+    margin: 10,
+    width: "60%",
+    backgroundColor: '#ea899a', 
+  }
 
-
-//contiene los diferentes arrays
-const categorias =[
-    {
-        //son objetos del array cada objeto representa una categoria de comida
-        //Es un String
-        tipo:"entrantes",
-        //Array de Strings 
-        comidas: ["Ensalda Cesar", "Pincho de tortilla", "Croquetas"]
-    },
-    {
-        tipo:"primeros",
-        comidas: ["Paella", "Arroz con pollo", "Lasaña"]
-    },
-    {
-        tipo:"segundos",
-        comidas: ["Filete a la plancha", "Salmón ahumado"]
-    },
-    {
-        tipo:"bebidas",
-        comidas: ["Coca Cola", "Nestea", "Agua"]
-    },
-    {
-        tipo:"postres",
-        comidas: ["Tiramisú ", "Tarta de chocolate", "Gelatina"]
-    },
-]
-
-/*const categorias2 ={
-    entrantes: ["a", "b"]
-}*/
+});

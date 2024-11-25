@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+/*importanmos las distintas clases*/
 import PantallaPrincipal from './components/PantallaPrincipal';
 import MenuMesas from './components/MenuMesas';
-
 import Insertar from './components/Insertar';
-
 import VistaComandas from './components/VistaComandas';
 
 
