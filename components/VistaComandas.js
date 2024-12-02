@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { Button } from "react-native-elements";
 
 const categorias = [
@@ -43,18 +43,19 @@ const categorias = [
 export default function MenuComandas({ route, navigation }) {
   const { tipo } = route.params; // Obtén el tipo de comida de los parámetros
   const categoria = categorias.find((c) => c.tipo === tipo); // Busca la categoría correspondiente
-
+ 
+  const handlePressComida = (comida) => {
+    console.log("comida", comida)
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{tipo.toUpperCase()}</Text>
       <View style={styles.buttonsContainer}>
         {categoria.comidas.map((comida, index) => (
-          <View style={styles.button} key={index}>
+          <Pressable style={styles.button} key={index} onPress={() => handlePressComida(comida.nombre)}>
             <Image style={styles.img} source={{ uri: comida.imagen}}/>{/* src sirve para leer el url de las imagenes*/ }
-            <Button title={comida.nombre} > 
-              <Text style={styles.title}> {comida.nombre}</Text>
-            </Button>
-          </View>
+            <Text style={styles.comidaNombre}> {comida.nombre}</Text>
+          </Pressable>
         ))}
       </View>
 
@@ -103,8 +104,9 @@ const styles = StyleSheet.create({
   button: {
     margin: 10,
     width: "60%", 
-    
-  
+    backgroundColor: "#DEB7D9",
+    borderRadius: 5,
+
   },
   buttonAtras:{
     margin:10,
@@ -116,5 +118,11 @@ const styles = StyleSheet.create({
     height: 60, // Ajusta el tamaño de la imagen
     marginRight: 10, // Espacio entre la imagen y el 
     alignSelf:"center",
+  },
+
+  comidaNombre: {
+    textAlign: "center", // Centra el texto horizontalmente
+    fontSize: 18, // Ajusta el tamaño del texto
+    marginTop: 5, // Añade un pequeño margen arriba del texto
   },
 });
