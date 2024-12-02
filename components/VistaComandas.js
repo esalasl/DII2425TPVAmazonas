@@ -1,16 +1,43 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-elements";
 
 const categorias = [
   {
     tipo: "entrantes",
-    comidas: ["Ensalada César", "Pincho de tortilla", "Croquetas"],
+    comidas: [
+      {nombre: "Ensalada César", imagen:"https://img.icons8.com/?size=100&id=ovjvLoLpBykl&format=png&color=000000" },
+      {nombre: "Pincho de tortilla", imagen:"https://img.icons8.com/?size=100&id=May0vAobhVtB&format=png&color=000000" } ,
+      {nombre: "Empanadas", imagen:"https://img.icons8.com/?size=100&id=itlHIhffhxAJ&format=png&color=000000"},
+     ],
   },
-  { tipo: "primeros", comidas: ["Paella", "Arroz con pollo", "Lasaña"] },
-  { tipo: "segundos", comidas: ["Filete a la plancha", "Salmón ahumado"] },
-  { tipo: "bebidas", comidas: ["Coca Cola", "Nestea", "Agua"] },
-  { tipo: "postres", comidas: ["Tiramisú", "Tarta de chocolate", "Gelatina"] },
+  { tipo: "primeros",
+     comidas: [
+      {nombre:"Paella", imagen: "https://img.icons8.com/?size=100&id=36786&format=png&color=000000"}, 
+      {nombre:"Arroz con pollo", imagen:"https://img.icons8.com/?size=100&id=r5NZ8ADZLAWG&format=png&color=000000" },
+      {nombre:"Lasaña", imagen: "https://img.icons8.com/?size=100&id=kaQDX8EXfZH8&format=png&color=000000"},
+     ], 
+    },
+  { tipo: "segundos", 
+    comidas: [
+      {nombre: "Entrecot a la plancha", imagen: "https://img.icons8.com/?size=100&id=70440&format=png&color=000000"}, 
+      {nombre:"Salmón con verduras", imagen: "https://img.icons8.com/?size=100&id=jXMwwR314xtQ&format=png&color=000000"},
+    ], 
+  },
+  { tipo: "bebidas", 
+    comidas: [
+      {nombre: "Coca Cola", imagen: "https://img.icons8.com/?size=100&id=97441&format=png&color=000000"},
+      {nombre: "Limonada", imagen: "https://img.icons8.com/?size=100&id=StrtrK0p6kzi&format=png&color=000000"},
+      {nombre: "Agua", imagen:"https://img.icons8.com/?size=100&id=13322&format=png&color=000000" },
+    ], 
+  },
+  { tipo: "postres", 
+    comidas: [
+      {nombre: "Tiramisú", imagen:"https://img.icons8.com/?size=100&id=2uSTQpoCKcV7&format=png&color=000000"}, 
+      {nombre: "Tarta de chocolate", imagen:"https://img.icons8.com/?size=100&id=kQjVO0obMmFg&format=png&color=000000"},
+      {nombre: "Gelatina" , imagen:"https://img.icons8.com/?size=100&id=HjjoBYCQPCDS&format=png&color=000000"},
+    ], 
+  },
 ];
 
 export default function MenuComandas({ route, navigation }) {
@@ -23,7 +50,10 @@ export default function MenuComandas({ route, navigation }) {
       <View style={styles.buttonsContainer}>
         {categoria.comidas.map((comida, index) => (
           <View style={styles.button} key={index}>
-            <Button title={comida} />
+            <Image style={styles.img} source={{ uri: comida.imagen}}/>{/* src sirve para leer el url de las imagenes*/ }
+            <Button title={comida.nombre} > 
+              <Text style={styles.title}> {comida.nombre}</Text>
+            </Button>
           </View>
         ))}
       </View>
@@ -73,11 +103,18 @@ const styles = StyleSheet.create({
   button: {
     margin: 10,
     width: "60%", 
+    
   
   },
   buttonAtras:{
     margin:10,
     marginTop: 20,
     
-  }
+  },
+  img: {
+    width: 60, // Ajusta el tamaño de la imagen
+    height: 60, // Ajusta el tamaño de la imagen
+    marginRight: 10, // Espacio entre la imagen y el 
+    alignSelf:"center",
+  },
 });
