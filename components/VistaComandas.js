@@ -1,4 +1,8 @@
+
 import React, { useState } from "react";
+
+import React from "react";
+
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { Button } from "react-native-elements";
 
@@ -41,6 +45,7 @@ const categorias = [
 ];
 
 export default function MenuComandas({ route, navigation }) {
+
   const { tipo } = route.params;
   const categoria = categorias.find((c) => c.tipo === tipo);
 
@@ -64,6 +69,14 @@ export default function MenuComandas({ route, navigation }) {
   const incrementarCantidad = () => setCantidad((prev) => prev + 1);
   const decrementarCantidad = () => setCantidad((prev) => (prev > 0 ? prev - 1 : 0));
 
+
+  const { tipo } = route.params; // Obtén el tipo de comida de los parámetros
+  const categoria = categorias.find((c) => c.tipo === tipo); // Busca la categoría correspondiente
+ 
+  const handlePressComida = (comida) => {
+    console.log("comida", comida)
+  }
+
   return (
     <View style={styles.container}>
       {/* Título */}
@@ -72,6 +85,7 @@ export default function MenuComandas({ route, navigation }) {
       {/* Comidas */}
       <View style={styles.buttonsContainer}>
         {categoria.comidas.map((comida, index) => (
+
           <View key={index} style={styles.comidaContainer}>
             <View style={styles.row}>
               {/* Botón de Decrementar */}
@@ -102,6 +116,12 @@ export default function MenuComandas({ route, navigation }) {
               )}
             </View>
           </View>
+
+          <Pressable style={styles.button} key={index} onPress={() => handlePressComida(comida.nombre)}>
+            <Image style={styles.img} source={{ uri: comida.imagen}}/>{/* src sirve para leer el url de las imagenes*/ }
+            <Text style={styles.comidaNombre}> {comida.nombre}</Text>
+          </Pressable>
+
         ))}
       </View>
 
@@ -201,10 +221,35 @@ const styles = StyleSheet.create({
   },
   actionButton: {
     margin: 10,
+
     width: "40%",
+
+    width: "60%", 
+    backgroundColor: "#DEB7D9",
+    borderRadius: 5,
+
+
   },
   buttonAtras: {
     margin: 10,
     marginTop: 20,
+
   },
 });
+
+    
+  },
+  img: {
+    width: 60, // Ajusta el tamaño de la imagen
+    height: 60, // Ajusta el tamaño de la imagen
+    marginRight: 10, // Espacio entre la imagen y el 
+    alignSelf:"center",
+  },
+
+  comidaNombre: {
+    textAlign: "center", // Centra el texto horizontalmente
+    fontSize: 18, // Ajusta el tamaño del texto
+    marginTop: 5, // Añade un pequeño margen arriba del texto
+  },
+});
+
